@@ -10,12 +10,17 @@ st.title("Gapminder Data Exploration")
 # Create a sidebar with various filters
 year_min = st.sidebar.slider("Year Min", 1952, 2007, 1952)
 year_max = st.sidebar.slider("Year Max", 1952, 2007, 2007)
-continent = st.sidebar.selectbox("Continent", df["continent"].unique())
+continent = st.sidebar.multiselect("Continent", df["continent"].unique())
 log_y = st.sidebar.radio("Y-axis Scale", ["Linear", "Log"])
+
+# Display the selected options
+st.write("Continent(s) selected:", continent)
 
 # Filter the dataset based on the selected values
 filtered_df = df[
-    (df["year"] >= year_min) & (df["year"] <= year_max) & (df["continent"] == continent)
+    (df["year"] >= year_min)
+    & (df["year"] <= year_max)
+    & df["continent"].isin(continent)
 ]
 
 # Create a scatter plot of GDP per capita vs life expectancy
@@ -39,6 +44,7 @@ st.plotly_chart(fig1)
 st.markdown(
     "This chart shows the relationship between GDP per capita and life expectancy for different countries and continents. You can use the filters in the sidebar to adjust the year range and continent, and to change the y-axis scale."
 )
+
 
 # Create a bar chart of GDP per capita by continent
 fig2 = px.bar(
