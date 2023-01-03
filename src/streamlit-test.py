@@ -71,3 +71,9 @@ st.plotly_chart(fig3)
 st.markdown(
     "This chart shows the population for different continents over time. You can use the filters in the sidebar to adjust the year range and continent."
 )
+
+# Create a bar chart of the countries
+fig = px.bar(df, x="country", y="gdpPercap", title="GDP per Capita by Country")
+
+# Display the plot
+st.plotly_chart(fig)
