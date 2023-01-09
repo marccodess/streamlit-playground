@@ -46,25 +46,41 @@ st.plotly_chart(fig1)
 # Display some text explaining the chart
 st.markdown(
     """
-    This chart shows the relationship between GDP per capita and 
+    This plot shows the relationship between GDP per capita and 
     life expectancy for different countries and countries. You can 
     use the filters in the sidebar to adjust the year range and country, 
     and to change the y-axis scale.
     """
 )
 
-# # Create a line chart of population by year
-# fig2 = px.line(
-#     filtered_df, x="year", y="pop", color="country", title="Population by Year"
+# # Create a bar chart of GDP per capita by continent
+# fig2 = px.bar(
+#     filtered_df, x="continent", y="gdpPercap", title="GDP per Capita by Continent"
 # )
-
-# # Update the layout to rename the axes
-# fig2.update_layout(xaxis=dict(title="Year"), yaxis=dict(title="Population"))
 
 # # Display the plot
 # st.plotly_chart(fig2)
 
 # # Display some text explaining the chart
 # st.markdown(
-#     "This chart shows the GDP per capita for different countries. You can use the filters in the sidebar to adjust the year range and country."
+#     "This chart shows the GDP per capita for different continents. You can use the filters in the sidebar to adjust the year range and continent."
 # )
+
+# # Create a line chart of population by year
+# fig3 = px.line(
+#     filtered_df, x="year", y="pop", color="continent", title="Population by Year"
+# )
+
+# # Display the plot
+# st.plotly_chart(fig3)
+
+# # Display some text explaining the chart
+# st.markdown(
+#     "This chart shows the population for different continents over time. You can use the filters in the sidebar to adjust the year range and continent."
+# )
+
+# # Create a bar chart of the countries
+# fig = px.bar(df, x="country", y="gdpPercap", title="GDP per Capita by Country")
+
+# # Display the plot
+# st.plotly_chart(fig)
